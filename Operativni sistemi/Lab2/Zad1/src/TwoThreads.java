@@ -1,7 +1,3 @@
-
-
-
-
 public class TwoThreads {
     public static class Thread1 extends Thread {
         public void run() {
