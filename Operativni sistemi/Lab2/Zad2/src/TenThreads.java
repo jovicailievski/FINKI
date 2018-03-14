@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.Random;
 
 public class TenThreads {
@@ -21,29 +22,42 @@ public class TenThreads {
     }
 
     public static void main(String[] args) {
-        WorkerThread[] runnables = new WorkerThread[20];
-        Thread [] threads = new Thread[20];
+        int maxRow = Integer.MIN_VALUE;
+        WorkerThread[] runnables = new WorkerThread[40];
+        Thread [] threads = new Thread[40];
         int[][] bigMatrix = getBigHairyMatrix();
         int max = Integer.MIN_VALUE;
 
         // Give each thread a slice of the matrix to work with
-        for (int i = 0; i < 20; i++) {
-            runnables[i] = new WorkerThread(bigMatrix[i]);
-            threads[i] = new Thread(runnables[i]);
+        for (int i = 0; i < 40; i++) {
+            int column = 0;
+            if(i < 20) {
+                runnables[i] = new WorkerThread(bigMatrix[i]);
+                threads[i] = new Thread(runnables[i]);
+            }else{
+                runnables[i] = new WorkerThread(getMatrixColumn(bigMatrix, column));
+                threads[i] = new Thread(runnables[i]);
+                column++;
+            }
             threads[i].start();
         }
 
         // Wait for each thread to finish
         try {
-            for (int i = 0; i < 20; i++) {
-                threads[i].join(); // why is this needed
-                max = Math.max(max, runnables[i].getMax());
+            for (int i = 0; i < 40; i++) {
+                threads[i].join();
+                if(i < 20) {
+                    max = Math.max(max, runnables[i].getMax());
+                }else{
+                    maxRow = Math.max(max, runnables[i].getMax());
+                }
             }
         } catch (InterruptedException e) {
             // fall through
         }
 
         System.out.println("Maximum value was " + max);
+        System.out.println("Maximum value by cols was " + maxRow);
 
     }
 
@@ -54,6 +68,15 @@ public class TenThreads {
             }
             System.out.println();
         }
+    }
+
+    static int []getMatrixColumn(int matrix[][],int n){
+        int column[] = new int [100];
+        int i = 0;
+        for(int row[]:matrix){
+            column[i++] = row[n];
+        }
+        return column;
     }
 
     static int[][] getBigHairyMatrix() {
