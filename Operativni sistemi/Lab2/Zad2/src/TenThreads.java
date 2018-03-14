@@ -35,7 +35,7 @@ public class TenThreads {
 
         // Wait for each thread to finish
         try {
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 20; i++) {
                 threads[i].join(); // why is this needed
                 max = Math.max(max, runnables[i].getMax());
             }

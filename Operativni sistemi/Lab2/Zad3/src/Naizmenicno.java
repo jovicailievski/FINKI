@@ -63,17 +63,17 @@ public class Naizmenicno {
         public void run() {
             try {
                 executeF2();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
     }
 
-    public void f1() {
+public void f1() {
         System.out.println("f1()");
         f1count++;
         if (f1count - f2count > maxDifference) {
-            maxDifference = f1count - f2count;
+        maxDifference = f1count - f2count;
         }
     }
 
