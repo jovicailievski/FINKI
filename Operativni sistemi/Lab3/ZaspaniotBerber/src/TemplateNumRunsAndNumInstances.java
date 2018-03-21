@@ -58,6 +58,7 @@ public class TemplateNumRunsAndNumInstances {
 
             // koga 5tiot klient ke notificira, berberot treba da se razbudi
             clientArived.acquire();
+
             if(state.arrivedCustomers >=5 && !state.barberWaked[0])
             state.barberWakeUp();
 
@@ -129,7 +130,6 @@ public class TemplateNumRunsAndNumInstances {
 
         public synchronized void customerArrived() throws RuntimeException {
             log(null, "customer arrived");
-            System.out.println("Arrived");
             arrivedCustomers++;
         }
 

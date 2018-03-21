@@ -16,7 +16,6 @@ public class TribeDinner {
 
     // TODO: definirajte gi semaforite i ostanatite promenlivi ovde (mora site
     // da se static)
-    static Semaphore posluzuvanje;
     static Semaphore daliPrazen;
     static Semaphore tri;
 
