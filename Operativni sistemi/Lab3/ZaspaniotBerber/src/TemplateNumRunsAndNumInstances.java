@@ -1,4 +1,3 @@
-import java.beans.Customizer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -15,8 +14,12 @@ import java.util.concurrent.Semaphore;
 public class TemplateNumRunsAndNumInstances {
 
     //TODO: definirajte gi semaforite i ostanatite promenlivi ovde (mora site da se static)
-
-
+    static Semaphore clientArived;
+    static Semaphore callCustomer;
+    static Semaphore enterCustomer;
+    static Semaphore spremenZaSpienje;
+    static Semaphore sisaj;
+    static Semaphore plati;
     /**
      * Metod koj treba da gi inicijalizira vrednostite na semaforite i
      * ostanatite promenlivi za sinhronizacija.
@@ -25,10 +28,13 @@ public class TemplateNumRunsAndNumInstances {
      * TODO: da se implementira
      *
      */
-    static Semaphore stanav;
-
     public static void init(int numBarbers) {
-        stanav = new Semaphore(0);
+        clientArived = new Semaphore(0);
+        callCustomer = new Semaphore(1);
+        enterCustomer = new Semaphore(0);
+        plati = new Semaphore(0);
+        spremenZaSpienje = new Semaphore(0);
+        sisaj = new Semaphore(0);
     }
 
     static class Barber extends TemplateThread {
@@ -51,23 +57,23 @@ public class TemplateNumRunsAndNumInstances {
         public void execute() throws InterruptedException {
 
             // koga 5tiot klient ke notificira, berberot treba da se razbudi
-            synchronized (TemplateThread.class) {
-                if(state.arrivedCustomers == 5 && !state.barberWaked[0])
-                state.barberWakeUp();
-            }
+            clientArived.acquire();
+            if(state.arrivedCustomers >=5 && !state.barberWaked[0])
+            state.barberWakeUp();
 
             // koga klientot ke pristigne, go vika klientot da vleze
+            callCustomer.acquire();
             state.barberCallCustomer();
-
+            enterCustomer.release();
 
             // koga klientot ke vleze, go potstrizuva
+            sisaj.acquire();
             state.cutHair();
+            plati.release();
 
             // proveruva dali ima klienti koi cekaat, ako nema, zaspiva
-            synchronized (Barber.class) {
-                if(state.arrivedCustomers == 0 && state.barberWaked[0])
-                state.barberGoToSleep();
-            }
+            spremenZaSpienje.acquire();
+            state.barberGoToSleep();
 
         }
     }
@@ -83,17 +89,22 @@ public class TemplateNumRunsAndNumInstances {
          * zadacata.
          */
         public void execute() throws InterruptedException {
-            synchronized (TemplateThread.class) {
+            synchronized (Consumer.class) {
                 state.customerArrived();
+                clientArived.release();
             }
-
             // dokolku e pettiot, go budi berberot
             // koga ke bide povikan, vleguva
+            enterCustomer.acquire();
             state.customerEntry();
+            sisaj.release();
+            callCustomer.release();
             // klientot vlegol vo berbernicata i e spremen za potstrizuvanje
             // koga ke go potstrizat, plakja
+            plati.acquire();
             state.customerPay();
-
+            if(state.arrivedCustomers < 1 && state.barberWaked[0])
+                spremenZaSpienje.release();
 
         }
     }
@@ -118,7 +129,7 @@ public class TemplateNumRunsAndNumInstances {
 
         public synchronized void customerArrived() throws RuntimeException {
             log(null, "customer arrived");
-            System.out.println("customer arrived");
+            System.out.println("Arrived");
             arrivedCustomers++;
         }
 
