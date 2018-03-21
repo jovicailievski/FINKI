@@ -61,9 +61,10 @@ public class TribeDinner {
                 state.cook();
             }else{
                 state.fillPlate();
-                state.eat();
             }
             tri.release();
+
+            state.eat();
 
         }
     }

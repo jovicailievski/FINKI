@@ -18,8 +18,8 @@ public class TancSoStudentite {
 
     public void init() {
         //TODO: da se implementira
-        presobleciM = new Semaphore(1);
-        presobleciZ = new Semaphore(1);
+        presobleciM = new Semaphore(10);
+        presobleciZ = new Semaphore(10);
         dancePar = new Semaphore(3);
         parReady = new Semaphore(0);
     }
@@ -31,7 +31,7 @@ public class TancSoStudentite {
             //TODO: da se implementira
             presobleciM.acquire();
             show.presobleci();
-            presobleciZ.release();
+            presobleciM.release();
             // samo maskoto go povikuva metodot tancuvaj
             parReady.acquire();
             dancePar.acquire();
@@ -65,7 +65,7 @@ public class TancSoStudentite {
             //TODO: da se implementira
             presobleciZ.acquire();
             show.presobleci();
-            presobleciM.release();
+            presobleciZ.release();
             parReady.release();
 
 
