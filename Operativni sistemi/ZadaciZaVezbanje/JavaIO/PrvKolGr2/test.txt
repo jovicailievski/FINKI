@@ -1,0 +1,118 @@
+Microsoft Expression
+
+Search MSDN with Bing
+Search MSDN with Bing Sign in
+United States (English)Drop down arrow
+
+ HomeLearnLibraryForums
+Ask a question
+Quick access
+Search related threads
+
+Search forum questions
+Asked by:
+How to select large sections of text to copy & paste?
+Expression  >  Expression Web and SuperPreview
+Question
+Question
+Sign in to vote
+0
+Sign in to vote
+Hi,
+
+In FrontPage and word processing programs, to select extensive lengths of text to copy and paste, one clicks the cursor at the beginning of the selection to be copied, moves forward in the text, then holds the Shift key and clicks the cursor at the end of the selection to be copied. This highlights the text and one can now click "Copy."
+
+In Expression Web, holding the Shift key at the end of the selction and clicking the cursor renders a large "plus" sign.
+
+What's the new way to select and copy in Expression Web?
+
+(Yes, I can place the cursor and scroll the page and try to stop where I want the highlighted material to stop - but it's virtually impossible as the scrolling starts and stops and jerks around at various speeds.)
+
+Thanks
+
+Wednesday, January 04, 2012 9:20 PM
+Reply | Quote
+All replies
+Question
+Sign in to vote
+0
+Sign in to vote
+Well, the way to do it is: "one clicks the cursor at the beginning of the selection to be copied, moves forward in the text, then holds the Shift key and clicks the cursor at the end of the selection to be copied. This highlights the text and one can now click 'Copy.'"
+
+I have no idea why that's not working for you.
+
+Edited by KathyW2 Wednesday, January 04, 2012 11:03 PM
+Wednesday, January 04, 2012 10:59 PM
+Reply | Quote
+ Question
+Sign in to vote
+0
+Sign in to vote
+Kathy,
+
+It maybe a mouse setting, I've seen similar i other programs where people have fiddled with their mouse settings or they have one of those mice with lots of buttons and scroll settings.
+
+Free Expression Web Tutorials
+For an Expression Web forum with without the posting issues try expressionwebforum.com
+Wednesday, January 04, 2012 11:14 PM
+Reply | Quote
+ Question
+Sign in to vote
+0
+Sign in to vote
+The only time that I have encountered this is when someone is using tables for layout, and selecting text in cells. Placing the text cursor anywhere in a cell, then pressing Shift or Ctrl, causes the cursor to change to a thick, white, cross with a thin black border.
+
+EW will, as far as I can tell, only permit selecting text within a cell, and only then by click-dragging. Shift-clicking within a cell selects all of the text within, while doing so across cell boundaries results in the full contents of all cells involved being selected.
+
+Given that EW4 completely removed the Layout Table menu selection, and the associated Properties panel, and one might get the idea that they're trying to discourage the use of tables for general purpose layout. Just a thought...  ;-)
+
+<edit>
+BTW, this won't work, either, if you're talking about more than one cell: "I can place the cursor and scroll the page and try to stop where I want the highlighted material to stop," because as soon as you cross a cell boundary, EW immediately selects the entire contents of both cells, no matter where you start your selection.
+
+Here's the thing, Jesse, layout tables are non-semantic and no longer recommended (not for years now). Coming from FrontPage to EW, you have a good deal to learn. Check out the Prerequisites for Using Microsoft Expression Web, and then the Forum FAQs and Guidelines - Start Here, where you will find the learning resources you'll need. Good luck.
+</edit>
+
+cheers,
+scott
+
+Please remember to "Mark as Answer" the responses that resolved your issue. It is common courtesy to recognize those who have helped you, and it also makes it easier for visitors to find the resolution later.
+Edited by paladyn Thursday, January 05, 2012 1:11 AM
+Thursday, January 05, 2012 12:48 AM
+Reply | Quote
+ Question
+Sign in to vote
+0
+Sign in to vote
+It's the exact same problem I have when I was using the free trial, once I get the full version of ew I'll try Scott suggestions. I don't think it's a mouse problem.
+
+Thursday, January 05, 2012 7:56 AM
+Reply | Quote
+ Question
+Sign in to vote
+0
+Sign in to vote
+It has nothing to do with free trial. They are identical. The only difference is that the free trial times out. You don't need to uninstall it and install the purchased version; just enter your activation code.
+Comic Sans walks into a bar. The bartender says, "Get out! We don't serve your type."
+Thursday, January 05, 2012 1:34 PM
+Reply | Quote
+ Question
+Sign in to vote
+0
+Sign in to vote
+It has nothing to do with free trial.
+yes I know that.
+Edited by Jack Sarlo Thursday, January 05, 2012 1:36 PM
+Thursday, January 05, 2012 1:36 PM
+Reply | Quote
+ Question
+Sign in to vote
+0
+Sign in to vote
+"Here's the thing, 5280, layout tables are non-semantic and no longer recommended," sneered Professor Snape. "Not for years now. Coming from FrontPage to EW, you have a good deal to learn." He paused for a moment, apparently savoring the pleasure of insulting Jesse. "You have no subtlety, 5280," continued Snape, his dark eyes glittering. "You do not understand fine distinctions. It is one of the shortcomings that makes you such a lamentable potion maker."
+
+
+The thing is, I publish a daily almanac, including lists of happenings (This Day In History, This Day In Music), etc. The bulk of these items do not change from year to year, and so the most efficient way for me to copy, say, January 6, 2011's contents to January 6, 2012's new almanac page has always been ... to copy them over. Copy and paste. Copy and paste. Been doing it for over a decade with various versions of FrontPage. Quick. Easy. No problems. Of course, everything is now improved, and better, so naturally it's less efficient and easy to use. (Sigh)
+Friday, January 06, 2012 5:45 PM
+Reply | Quote
+© 2018 Microsoft. All rights reserved.
+Terms of Use|Trademarks|Privacy Statement|Site Feedback
