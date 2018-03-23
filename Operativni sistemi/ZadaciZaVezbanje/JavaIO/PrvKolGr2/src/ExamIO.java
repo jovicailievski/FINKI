@@ -1,3 +1,5 @@
+import com.sun.javafx.iio.ios.IosDescriptor;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,21 +48,49 @@ public class ExamIO {
         }
     }
 
-    public static void main(String []args) throws IOException {
-        //copyLargeTxtFiles("E:\\FINKI-GIT\\Operativni sistemi\\ZadaciZaVezbanje\\JavaIO\\PrvKolGr2","E:\\FINKI-GIT\\Operativni sistemi\\ZadaciZaVezbanje\\JavaIO\\PrvKolGr2\\move",59);
-        Random r = new Random();
-        List<byte[]> list = new ArrayList<>();
+    public static byte[] deserializeDataAtPosition(String source, long position, long elementLength) throws IOException {
+        byte []bytes = new byte[(int)elementLength];
+        RandomAccessFile rf = null;
 
-        for(int i=0;i<100;i++){
-            byte[] a = new byte[10];
-            for(int j=0;j<10;j++) {
-                char c = (char) (r.nextInt(26) + 'a');
-                a[j] = (byte) c;
+        try {
+            rf = new RandomAccessFile(source, "rw");
+            long where = position*elementLength - elementLength;
+            int k = 0;
+            int c;
+            for(long i=where;i<where+elementLength;i++){
+                rf.seek(i);
+                c = rf.read();
+                bytes[k++] = (byte)c;
+
             }
-            list.add(a);
+        }
+        finally {
+            rf.close();
         }
 
-        serializeData("E:\\FINKI-GIT\\Operativni sistemi\\ZadaciZaVezbanje\\JavaIO\\PrvKolGr2\\write.txt",list);
-   }
+        return bytes;
+    }
+
+    public static void main(String []args) throws IOException {
+        // copyLargeTxtFiles("E:\\FINKI-GIT\\Operativni sistemi\\ZadaciZaVezbanje\\JavaIO\\PrvKolGr2","E:\\FINKI-GIT\\Operativni sistemi\\ZadaciZaVezbanje\\JavaIO\\PrvKolGr2\\move",59);
+//        Random r = new Random();
+//        List<byte[]> list = new ArrayList<>();
+//
+//        for(int i=0;i<100;i++){
+//            byte[] a = new byte[10];
+//            for(int j=0;j<10;j++) {
+//                char c = (char) (r.nextInt(26) + 'a');
+//                a[j] = (byte) c;
+//            }
+//            list.add(a);
+//        }
+//
+//        serializeData("E:\\FINKI-GIT\\Operativni sistemi\\ZadaciZaVezbanje\\JavaIO\\PrvKolGr2\\write.txt",list);
+//
+//        byte[] test = deserializeDataAtPosition("E:\\FINKI-GIT\\Operativni sistemi\\ZadaciZaVezbanje\\JavaIO\\PrvKolGr2\\deserialize.txt",2,5);
+//        for (byte b:test){
+//            System.out.print((char)b);
+//        }
+    }
 
 }
