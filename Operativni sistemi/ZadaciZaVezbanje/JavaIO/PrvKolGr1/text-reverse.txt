@@ -1,8 +1,1 @@
-atobar
-elegna
-acivoj
-anomis
-atobar
-elegna
-anomis
-acivoj
+atobarelegnaacivojanomisatobarelegnaanomisacivoj

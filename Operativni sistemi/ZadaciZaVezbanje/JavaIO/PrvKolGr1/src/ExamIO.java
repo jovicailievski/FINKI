@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -7,14 +8,13 @@ public class ExamIO {
     public static void moveWritableTxtFiles(String from, String to) throws IOException {
         File here = new File(from);
         File there = new File(to);
-
         if(here.exists()) {
             there.mkdir();
 
             File[] datoteki = here.listFiles();
 
             for (File datoteka : datoteki) {
-                if (datoteka.isFile() && datoteka.getName().endsWith(".txt")) {
+                if (datoteka.isFile() && datoteka.getName().endsWith(".txt") && datoteka.canWrite()) {
                     System.out.println(datoteka.getName());
                     datoteka.renameTo(new File(there.getName() + "\\" + datoteka.getName()));
                 }
