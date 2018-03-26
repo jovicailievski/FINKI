@@ -31,7 +31,7 @@ public class Poker {
                     igraj.release(6);
                 }
             }
-            
+
             igraj.acquire();
             state.play();
 
