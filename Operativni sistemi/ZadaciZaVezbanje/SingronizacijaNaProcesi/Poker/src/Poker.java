@@ -21,7 +21,6 @@ public class Poker {
 
         @Override
         public void execute() throws InterruptedException {
-
             sedni.acquire();
             state.playerSeat();
 
@@ -32,8 +31,7 @@ public class Poker {
                     igraj.release(6);
                 }
             }
-
-
+            
             igraj.acquire();
             state.play();
 
@@ -44,9 +42,6 @@ public class Poker {
                     sedni.release(6);
                 }
             }
-
-
-
 
         }
 
